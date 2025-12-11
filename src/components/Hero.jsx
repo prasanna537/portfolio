@@ -49,7 +49,7 @@ const Hero = () => {
         </div>
 
         {/* TEXT */}
-        <div className="w-full lg:w-1/2 max-w-xl lg:ml-10 lg:mt-16 mt-10">
+        <div className="w-full lg:w-1/2 max-w-xl lg:ml-10 lg:mt-16 mt-10 text-center lg:text-left px-4">
           <motion.h2
             variants={childVariants}
             className="pb-2 text-4xl tracking-tight lg:text-8xl text-white"
@@ -66,7 +66,7 @@ const Hero = () => {
 
           <motion.p
             variants={childVariants}
-            className="my-2 max-w-lg py-6 text-xl leading-relaxed tracking-tighter text-gray-400"
+            className="my-2 max-w-lg py-6 text-xl leading-relaxed tracking-tighter text-gray-400 mx-auto lg:mx-0"
           >
             {HERO_CONTENT}
           </motion.p>

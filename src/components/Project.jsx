@@ -10,14 +10,14 @@ const Projects = () => {
         {PROJECTS.map((project, index) => (
           <div
             key={index}
-            className="mb-8 flex flex-wrap lg:justify-center items-start"
+            className="mb-8 flex flex-wrap justify-center items-start"
           >
             {/* IMAGE (slides in from left) */}
             <motion.div
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: -100 }}
               transition={{ duration: 1 }}
-              className="w-full lg:w-1/4 flex justify-center"
+              className="w-full lg:w-1/4 flex justify-center mx-auto"
             >
               <img
                 src={project.image}
@@ -33,7 +33,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 100 }}
               transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4"
+              className="w-full max-w-xl lg:w-3/4 text-center lg:text-left px-4"
             >
               <h3 className="mb-2 font-semibold text-2xl text-white">
                 {project.title}
