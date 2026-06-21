@@ -1,56 +1,100 @@
 import { PROJECTS } from "../constants";
 import { motion } from "framer-motion";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 const Projects = () => {
   return (
-    <div className="pb-4">
-      <h2 className="my-20 text-center text-4xl text-white">Projects</h2>
+    <div id="projects" className="pb-24 w-full">
+      {/* Section Title */}
+      <motion.h2
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -50 }}
+        transition={{ duration: 1.2 }}
+        className="my-20 text-center text-4xl text-white font-bold tracking-tight"
+      >
+        Projects
+      </motion.h2>
 
-      <div>
+      {/* Card Grid */}
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-8">
         {PROJECTS.map((project, index) => (
-          <div
+          <motion.div
             key={index}
-            className="mb-8 flex flex-wrap justify-center items-start"
+            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
+            whileHover={{ y: -6 }}
+            className="group bg-slate-900/30 border border-slate-800/80 rounded-2xl overflow-hidden
+              hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-900/10
+              transition-all duration-500"
           >
-            {/* IMAGE (slides in from left) */}
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: -100 }}
-              transition={{ duration: 1 }}
-              className="w-full lg:w-1/4 flex justify-center mx-auto"
-            >
+            {/* Project Image */}
+            <div className="relative overflow-hidden">
               <img
                 src={project.image}
-                width={250}
-                height={250}
                 alt={project.title}
-                className="mb-6 rounded"
+                className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </motion.div>
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent
+                opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                flex items-end justify-center pb-4"
+              >
+                <span className="text-sm text-white/80 font-medium px-4 py-2 rounded-full border border-white/20 backdrop-blur-sm">
+                  View Details →
+                </span>
+              </div>
+            </div>
 
-            {/* DETAILS (slides in from right) */}
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1 }}
-              className="w-full max-w-xl lg:w-3/4 text-center lg:text-left px-4"
-            >
-              <h3 className="mb-2 font-semibold text-2xl text-white">
+            {/* Project Details */}
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">
                 {project.title}
               </h3>
+              <p className="text-stone-400 text-sm leading-relaxed mb-4">
+                {project.description}
+              </p>
 
-              <p className="mb-4 text-stone-400">{project.description}</p>
+              {/* Tech Badges */}
+              <div className="flex flex-wrap gap-2">
+                {project.technologies?.map((tech, tIndex) => (
+                  <span
+                    key={tIndex}
+                    className="px-3 py-1 text-xs font-medium rounded-full
+                      bg-purple-500/10 text-purple-300 border border-purple-500/20"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-              {project.technologies?.map((tech, tIndex) => (
-                <span
-                  key={tIndex}
-                  className="mr-2 mb-2 inline-block rounded bg-stone-900 px-2 py-1 text-sm font-medium text-stone-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </motion.div>
-          </div>
+              {/* Action Links */}
+              <div className="flex items-center gap-4 mt-6 pt-4 border-t border-slate-800/60">
+                {project.githubLink && (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-stone-400 hover:text-white transition-colors duration-300"
+                  >
+                    <FiGithub className="text-base" />
+                    GitHub
+                  </a>
+                )}
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors duration-300 ml-auto"
+                  >
+                    <FiExternalLink className="text-base" />
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </div>
