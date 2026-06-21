@@ -65,7 +65,7 @@ export const PROJECTS = [
     description:
       "Designed and developed a personal portfolio website to showcase projects, technical skills, certifications, and professional experience with a responsive modern UI.",
     technologies: ["React.js", "Vite", "JavaScript", "HTML", "CSS"],
-    liveLink: "https://prasanna-portfolio.vercel.app", // Replace with your portfolio live link
+    liveLink: "https://portfolio-swart-five-g8jj71btye.vercel.app/", // Replace with your portfolio live link
     githubLink: null,
   },
 ];
